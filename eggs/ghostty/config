@@ -60,7 +60,7 @@ palette = 0=#131213
 palette = 1=#b00b69
 palette = 2=#9ddf69
 palette = 3=#ffcc00
-palette = 4=#008080
+palette = 4=#28aaeb
 palette = 5=#a24030
 palette = 6=#714ca6
 palette = 7=#f15c99
@@ -68,7 +68,7 @@ palette = 8=#ffbee3
 palette = 9=#b00b69
 palette = 10=#9ddf69
 palette = 11=#ffcc00
-palette = 12=#008080
+palette = 12=#28cbeb
 palette = 13=#a24030
 palette = 14=#714ca6
 palette = 15=#632227
@@ -79,7 +79,7 @@ palette = 19=#472234
 palette = 20=#9b2a46
 palette = 21=#81506a
 
-background-opacity = 0.6
+background-opacity = 0.8
 background-blur = true
 
 window-theme = ghostty 
