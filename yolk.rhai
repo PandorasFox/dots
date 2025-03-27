@@ -1,7 +1,6 @@
 let eggs = #{
 	ghostty: #{
 		targets: "~/.config/ghostty",
-		enabled: true,
 	},
 	zsh: #{
 		targets: #{
@@ -19,9 +18,12 @@ let eggs = #{
 	},
 	scripts: #{
 		targets: #{
+			// TODO: guard against `bw` installed?
 			"gen_yolk_secrets_files.sh": "~/bin/gen_yolk_secrets_files.sh",
 		},
 	},
+	vim: #{ targets: "~", strategy: "merge" },
+
 };
 
 let secrets_mapping = #{
