@@ -12,20 +12,25 @@ let eggs = #{
 	music: #{
 		targets: #{
 			"mpd.conf": "~/.config/mpd/mpd.conf",
+			"now_playing.sh": "~/bin/now_playing.sh",
 			"ncmpcpp.config": "~/.config/ncmpcpp/config",
 		},
-		templates: ["mpdscribble.conf"],
+		templates: [],
+	},
+	scripts: #{
+		targets: #{
+			"gen_yolk_secrets_files.sh": "~/bin/gen_yolk_secrets_files.sh",
+		},
 	},
 };
 
 let secrets_mapping = #{
 	"last.fm": #{
-		"music": #{
-			targets: #{
-				"mpdscribble.conf": "~/.config/mpdscribble/mpdscribble.conf",
-			},
-			templates: ["mpdscribble.conf"],
+		egg: "music",
+		targets: #{
+			"mpdscribble.conf": "~/.config/mpdscribble/mpdscribble.conf",
 		},
+		templates: ["mpdscribble.conf"],
 	},
 };
 
@@ -58,10 +63,13 @@ fn get_secret(secret_name) {
 
 
 for secret_name in secrets_mapping.keys() {
+	let config_map = secrets_mapping[secret_name];
 	if secret_exists(secret_name) {
 		secrets[secret_name] = read_secret_file(secret_name);
-		// merge templates into eggs mapping so they get synced into place
-		eggs += secrets_mapping[secret_name]
+		// TODO: make these work better with varied data types
+		// (e.g. no 'templates', targets being an array => turn into map..... ugh.....
+		eggs[config_map.egg].targets += config_map.targets;
+		eggs[config_map.egg].templates += config_map.templates;
 	}
 }
 
