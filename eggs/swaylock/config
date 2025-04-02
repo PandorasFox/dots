@@ -1,0 +1,13 @@
+image=DP-5:~/Pictures/wallpapers/persephone_char_sheet.png
+image=DP-6:~/Pictures/wallpapers/pandora_neon_white.png
+scaling=fill
+
+inside-color=f15c9980
+ring-color=f15c9980
+line-uses-inside
+key-hl-color=13121399
+font=monofur
+indicator-radius=100
+
+inside-ver-color=6928eb80
+

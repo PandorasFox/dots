@@ -1,0 +1,8 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/swaybg -o "DP-5" -i "%h/Pictures/wallpapers/pawdi.png" -o "DP-6" -i "%h/Pictures/wallpapers/garden.png"
+Restart=on-failure

@@ -1,13 +1,37 @@
 import "secrets" as secrets;
 
 let eggs = #{
-	ghostty: #{
-		targets: "~/.config/ghostty",
-	},
 	zsh: #{
 		targets: #{
 			".zshenv": "~/.zshenv",
-			"zsh": "~/zsh"
+			"zsh": "~/zsh",
+		},
+	},
+	vim: #{
+		targets: #{
+			"vimrc": "~/.vimrc",
+			"vim": "~/.vim",
+		},
+	},
+	neovim: #{
+		targets: "~/.config/nvim/",
+	},
+	ghostty: #{
+		targets: "~/.config/ghostty/",
+	},
+	niri: #{
+		targets: "~/.config/niri/",
+	},
+	swaylock: #{
+		targets: "~/.config/swaylock/",
+	},
+	waybar: #{
+		targets: "~/.config/waybar/",
+	},
+	unit_files: #{
+		targets: #{
+			"swaybg.service": "~/.config/systemd/user/swaybg.service",
+			"swayidle.service": "~/.config/systemd/user/swayidle.service",
 		},
 	},
 	music: #{
@@ -24,10 +48,6 @@ let eggs = #{
 			"gen_yolk_secrets_files.sh": "~/bin/gen_yolk_secrets_files.sh",
 		},
 	},
-	vim: #{ targets: "~", strategy: "merge" },
-	neovim: #{
-		targets: "~/.config/nvim/",
-	},
 };
 
 let secrets_mapping = #{
@@ -35,10 +55,17 @@ let secrets_mapping = #{
 		egg: "music",
 		targets: #{
 			"mpdscribble.conf": "~/.config/mpdscribble/mpdscribble.conf",
+			// wild that this nonsense actually works as intended and avoids
+			// committing secrets
 		},
 		templates: ["mpdscribble.conf"],
 	},
 };
+
+// todo: split up above eggs file into categories, merge based on hostname
+// todo: collate {waybar, swayidle, swaylock, swaybg} together into one egg?
+//   -- i want to keep it separate from Niri so that WM remains theoretically
+//   -- swappable.
 
 // todo: condense and move into secrets.rhai
 
