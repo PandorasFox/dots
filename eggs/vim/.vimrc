@@ -1,3 +1,40 @@
 set term=xterm-256color
 
-source ~/.vim/shared.rc
+colorscheme monokai
+
+" airline stuff "
+
+let g:airline_theme = 'base16_monokai'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+
+let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_c = '%t'
+
+syntax on
+
+set number
+set relativenumber
+set title
+set hidden
+
+set mouse=a
+set tabstop=4
+set shiftwidth=4
+set noexpandtab
+set smartindent
+
+set nopaste
+set nowrap
+set whichwrap+=<,>,h,l,[,]
+"set pastetoggle=<F2>"
+set laststatus=2
+set ignorecase
+set infercase
+set timeoutlen=500
+set showcmd
+set t_Co=256
+
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>

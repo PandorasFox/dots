@@ -25,6 +25,9 @@ let eggs = #{
 		},
 	},
 	vim: #{ targets: "~", strategy: "merge" },
+	neovim: #{
+		targets: "~/.config/nvim/",
+	},
 };
 
 let secrets_mapping = #{
