@@ -11,6 +11,13 @@ let eggs = #{
 		templates: ["bits/*.zsh"],
 		main_file: "bits",
 	},
+	starship: #{
+		enabled: io::command_available("starship"),
+		targets: #{
+			"config.toml": "~/.config/starship.toml",
+		},
+		templates: ["config.toml"],
+	},
 	vim: #{
 		targets: #{
 			"vimrc": "~/.vimrc",
@@ -18,18 +25,26 @@ let eggs = #{
 		},
 	},
 	neovim: #{
+		enabled: io::command_available("nvim"),
 		targets: "~/.config/nvim/",
 	},
 	ghostty: #{
 		targets: "~/.config/ghostty/",
 	},
 	niri: #{
+		enabled: io::command_available("niri"),
 		targets: "~/.config/niri/",
 	},
+	fuzzel: #{
+		enabled: io::command_available("fuzzel"),
+		targets: "~/.config/fuzzel/",
+	},
 	swaylock: #{
+		enabled: io::command_available("swaylock"),
 		targets: "~/.config/swaylock/",
 	},
 	waybar: #{
+		enabled: io::command_available("waybar"),
 		targets: #{
 			"style.css": "~/.config/waybar/style.css",
 			"config.jsonc": "~/.config/waybar/config.jsonc",
