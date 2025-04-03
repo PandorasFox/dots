@@ -3,9 +3,13 @@ import "secrets" as secrets;
 let eggs = #{
 	zsh: #{
 		targets: #{
-			".zshenv": "~/.zshenv",
-			"zsh": "~/.config/zsh",
+			"zshenv": "~/.zshenv",
+			"zshrc": "~/.config/zsh/.zshrc",
+			"zprofile": "~/.config/zsh/.zprofile",
+			"bits": "~/.config/zsh/bits",
 		},
+		templates: ["bits/*.zsh"],
+		main_file: "bits",
 	},
 	vim: #{
 		targets: #{

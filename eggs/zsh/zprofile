@@ -1,0 +1,9 @@
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM=wayland
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+export GTK_THEME=Adwaita:dark
+export MANGOHUD=1
+
+# good lord what's going on in here
+export PATH=$PATH:"$HOME/.cargo/bin:$PATH:$HOME/bin"
