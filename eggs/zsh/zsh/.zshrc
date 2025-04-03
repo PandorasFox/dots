@@ -3,6 +3,7 @@ local files=(
 	completion.zsh
 	aliases.zsh
 	keybinds.zsh
+	atuin.zsh
 )
 
 for i in $files; do
@@ -13,7 +14,3 @@ for i in $files; do
 done
 
 eval "$(starship init zsh)"
-
-# Created by `pipx` on 2025-03-15 22:03:58
-# TODO CLEANUP
-export PATH="$PATH:/home/hecate/.local/bin"

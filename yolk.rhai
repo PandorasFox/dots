@@ -4,7 +4,7 @@ let eggs = #{
 	zsh: #{
 		targets: #{
 			".zshenv": "~/.zshenv",
-			"zsh": "~/zsh",
+			"zsh": "~/.config/zsh",
 		},
 	},
 	vim: #{
@@ -26,7 +26,10 @@ let eggs = #{
 		targets: "~/.config/swaylock/",
 	},
 	waybar: #{
-		targets: "~/.config/waybar/",
+		targets: #{
+			"style.css": "~/.config/waybar/style.css",
+			"config.jsonc": "~/.config/waybar/config.jsonc",
+		},
 	},
 	unit_files: #{
 		targets: #{
@@ -64,8 +67,9 @@ let secrets_mapping = #{
 
 // todo: split up above eggs file into categories, merge based on hostname
 // todo: collate {waybar, swayidle, swaylock, swaybg} together into one egg?
-//   -- i want to keep it separate from Niri so that WM remains theoretically
-//   -- swappable.
+//  i want to keep it separate from Niri so that WM remains theoretically swappable.
+// todo: maybe also include (a copy of) wallpapers? need to figure out Good art
+// storage and categorizing
 
 // todo: condense and move into secrets.rhai
 
