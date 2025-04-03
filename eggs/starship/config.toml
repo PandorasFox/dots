@@ -8,6 +8,10 @@ success_symbol = '[➜](bold green)'
 [cmd_duration]
 min_time = 5_000
 
+[directory]
+truncation_length = 4
+truncation_symbol = '…/'
+
 [hostname]
 ssh_only = true
 style = "pink"
