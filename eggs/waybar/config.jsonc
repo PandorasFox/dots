@@ -21,8 +21,7 @@
 		"clock"
 	],
 	"mpd": {
-		"server": "localhost",
-		
+		"server": "@mpd",
 	},
 	// Modules configuration
 	"custom/notification": {

@@ -1,5 +1,7 @@
 # {% if SYSTEM.hostname == "zephyr" %}
 #<yolk> eval "$(/opt/homebrew/bin/brew shellenv)"
+#<yolk> # {# replace_between(`"`, `@`, secrets::get("mpd")) #} 
+#<yolk> export MPD_HOST="@TODO DYNDNS"
 # {% end %}
 
 # {% if SYSTEM.hostname == "pantheon" %}
@@ -9,9 +11,7 @@
 #<yolk> export GTK_THEME=Adwaita:dark
 #<yolk> export MANGOHUD=1
 
-#<yolk> # {# replace_between(`"`, `@`, secrets::get("mpd")) #}
-#<yolk> export MPD_HOST="@localhost"
-
+#<yolk> export MPD_HOST="@mpd"
 #<yolk> # good lord what's going on in here
 #<yolk> export PATH=$PATH:"$HOME/.cargo/bin:$PATH:$HOME/bin"
 # {% end %}

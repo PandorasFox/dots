@@ -1,7 +1,9 @@
 export ZDOTDIR="$HOME/.config/zsh"
 
 # {% if SYSTEM.hostname == "pantheon" %}
-export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
-# {% else if SYSTEM.hostname == "zephyr" %}
+#<yolk> export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
+# {% else %}
+# {% if SYSTEM.hostname == "zephyr" %}
 export SSH_AUTH_SOCK=~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+# {% end %}
 # {% end %}

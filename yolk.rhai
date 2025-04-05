@@ -8,7 +8,7 @@ let eggs = #{
 			"zprofile": "~/.config/zsh/.zprofile",
 			"bits": "~/.config/zsh/bits",
 		},
-		templates: ["bits/*.zsh", "zprofile"],
+		templates: ["bits/*.zsh", "zprofile", "zshenv"],
 		main_file: "bits",
 		optional_secrets: ["mpd"],
 	},
@@ -53,6 +53,7 @@ let eggs = #{
 			"config.jsonc": "~/.config/waybar/config.jsonc",
 		},
 		main_file: "config.jsonc",
+		templates: ["config.jsonc", "style.css"]
 	},
 	unit_files: #{
 		targets: #{
