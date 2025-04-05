@@ -7,3 +7,7 @@ export MANGOHUD=1
 
 # good lord what's going on in here
 export PATH=$PATH:"$HOME/.cargo/bin:$PATH:$HOME/bin"
+
+# {% if SYSTEM.hostname == "zephyr" %}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# {% end %}
