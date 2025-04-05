@@ -7,7 +7,7 @@ database_path = "/home/hecate/.config/ddns/dyndns_stats_db.sqlite"
 enable_web = false
 
 ipv6 = true
-ipv4 = false
+ipv4 = true
 
 [[domains]]
 name = "hecate.pink"
@@ -15,3 +15,8 @@ name = "hecate.pink"
 [[domains.records]]
 type = "AAAA"
 name = "canonical-hostname" # {< rin(`"`, SYSTEM.hostname) >}
+
+[[domains.records]]
+type = "A"
+name = "canonical-hostname" # {< rin(`"`, SYSTEM.hostname) >}
+

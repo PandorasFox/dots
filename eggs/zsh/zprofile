@@ -9,7 +9,7 @@
 #<yolk> export QT_QPA_PLATFORM=wayland
 #<yolk> export ELECTRON_OZONE_PLATFORM_HINT=auto
 #<yolk> export GTK_THEME=Adwaita:dark
-#<yolk> export MANGOHUD=1
+#<yolk> # export MANGOHUD=1
 
 #<yolk> export MPD_HOST="@mpd"
 #<yolk> # good lord what's going on in here
