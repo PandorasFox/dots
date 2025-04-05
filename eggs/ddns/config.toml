@@ -7,6 +7,7 @@ database_path = "/home/hecate/.config/ddns/dyndns_stats_db.sqlite"
 enable_web = false
 
 ipv6 = true
+ipv4 = false
 
 [[domains]]
 name = "hecate.pink"
