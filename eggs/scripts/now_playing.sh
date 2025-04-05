@@ -7,7 +7,7 @@ tput clear
 
 function print_centered {
 	# trust me bro you do not need to comprehend the horrors
-	str_len=${#1}
+	str_len=${#1}  #{< rr("XD", "#1") >}
 	spaze=$(( ($COLUMNS - $str_len)/2 ))
 	left_padding=$((spaze + str_len))	
 	left_padded=${(l:left_padding:)1}
@@ -65,5 +65,5 @@ while true; do
 	mpc current --wait 2>&1 >/dev/null & wait_pid=$!
 	wait
 	wait_pid=
-	# ILL FUCKEN DO IT AGAIN
+	# DO IT AGAIN!
 done

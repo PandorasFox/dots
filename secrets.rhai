@@ -20,5 +20,5 @@ fn read_file(secret_name) {
 }
 
 fn get(secret_name) {
-	return secrets::secrets_map[secret_name] ?? "";
+	return secrets::read_file(secret_name);
 }

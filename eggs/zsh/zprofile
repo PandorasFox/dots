@@ -1,17 +1,20 @@
 # {% if SYSTEM.hostname == "zephyr" %}
-eval "$(/opt/homebrew/bin/brew shellenv)"
+#<yolk> eval "$(/opt/homebrew/bin/brew shellenv)"
 # {% end %}
 
 # {% if SYSTEM.hostname == "pantheon" %}
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland
-export ELECTRON_OZONE_PLATFORM_HINT=auto
+#<yolk> export MOZ_ENABLE_WAYLAND=1
+#<yolk> export QT_QPA_PLATFORM=wayland
+#<yolk> export ELECTRON_OZONE_PLATFORM_HINT=auto
+#<yolk> export GTK_THEME=Adwaita:dark
+#<yolk> export MANGOHUD=1
 
-export GTK_THEME=Adwaita:dark
-export MANGOHUD=1
+#<yolk> # {# replace_between(`"`, `@`, secrets::get("mpd")) #}
+#<yolk> export MPD_HOST="@localhost"
 
-# good lord what's going on in here
-export PATH=$PATH:"$HOME/.cargo/bin:$PATH:$HOME/bin"
-# {% end }
+#<yolk> # good lord what's going on in here
+#<yolk> export PATH=$PATH:"$HOME/.cargo/bin:$PATH:$HOME/bin"
+# {% end %}
+
 
 export EDITOR=`which nvim`

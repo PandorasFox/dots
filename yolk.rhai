@@ -8,8 +8,9 @@ let eggs = #{
 			"zprofile": "~/.config/zsh/.zprofile",
 			"bits": "~/.config/zsh/bits",
 		},
-		templates: ["bits/*.zsh"],
+		templates: ["bits/*.zsh", "zprofile"],
 		main_file: "bits",
+		optional_secrets: ["mpd"],
 	},
 	starship: #{
 		enabled: io::command_available("starship"),
@@ -59,29 +60,18 @@ let eggs = #{
 	},
 	music: #{
 		targets: #{
-			"mpd.conf": "~/.config/mpd/mpd.conf",
-			"now_playing.sh": "~/bin/now_playing.sh",
 			"ncmpcpp.config": "~/.config/ncmpcpp/config",
+			"mpd.conf": "~/.config/mpd/mpd.conf",
+			"mpdscribble.conf": "~/.config/mpdscribble/mpdscribble.conf",
 		},
-		templates: [],
+		templates: ["*"],
+		required_secrets: ["mpd", "last.fm"],
 	},
 	scripts: #{
 		targets: #{
-			// TODO: guard against `bw` installed?
 			"gen_yolk_secrets_files.sh": "~/bin/gen_yolk_secrets_files.sh",
+			"now_playing.sh": "~/bin/now_playing.sh",
 		},
-	},
-};
-
-let secrets_mapping = #{
-	"last.fm": #{
-		egg: "music",
-		targets: #{
-			"mpdscribble.conf": "~/.config/mpdscribble/mpdscribble.conf",
-			// wild that this nonsense actually works as intended and avoids
-			// committing secrets
-		},
-		templates: ["mpdscribble.conf"],
 	},
 };
 
@@ -92,16 +82,5 @@ let secrets_mapping = #{
 // storage and categorizing
 
 // todo: condense and move into secrets.rhai
-
-for secret_name in secrets_mapping.keys() {
-	let config_map = secrets_mapping[secret_name];
-	if secrets::exists(secret_name) {
-		secrets::secrets_map[secret_name] = secrets::read_file(secret_name);
-		// TODO: make these work better with varied data types
-		// (e.g. no 'templates', targets being an array => turn into map..... ugh.....
-		eggs[config_map.egg].targets += config_map.targets;
-		eggs[config_map.egg].templates += config_map.templates;
-	}
-}
 
 export eggs;
