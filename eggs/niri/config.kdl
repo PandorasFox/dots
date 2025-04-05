@@ -36,6 +36,7 @@ debug {
 spawn-at-startup "xwayland-satellite"
 environment {
 		DISPLAY ":0"
+		MPD_HOST "@localhost" // {< rbet(`"`, `@`, secrets::get("mpd")) >}
 }
 hotkey-overlay {
     skip-at-startup
@@ -153,6 +154,11 @@ window-rule {
 		exclude app-id="steam_app_1422450"
 		geometry-corner-radius 12
 		clip-to-geometry true
+}
+
+window-rule {
+		match app-id="steam_app_3241660"
+		max-width 2560
 }
 
 window-rule {

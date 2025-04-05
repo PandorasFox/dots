@@ -35,6 +35,8 @@ let eggs = #{
 	niri: #{
 		enabled: io::command_available("niri"),
 		targets: "~/.config/niri/",
+		templates: ["config.kdl"],
+		optional_secrets: ["mpd"],
 	},
 	fuzzel: #{
 		enabled: io::command_available("fuzzel"),
