@@ -21,4 +21,4 @@ vim.cmd("hi LineNrBelow guibg=#222436 guifg=#c8d3f5")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.title = true
-
+vim.opt.wrap = false

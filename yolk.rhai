@@ -12,6 +12,13 @@ let eggs = #{
 		main_file: "bits",
 		optional_secrets: ["mpd"],
 	},
+	ddns: #{
+		targets: #{
+			"config.toml": "~/.config/ddns/config.toml",
+			"ddns.service": "~/.config/systemd/user/ddns.service",
+		},
+		templates: ["config.toml"],
+	},
 	starship: #{
 		enabled: io::command_available("starship"),
 		targets: #{
