@@ -16,6 +16,18 @@ output "Samsung Electric Company U32R59x HNMN702707" {
 		scale 1.0
 }
 
+workspace "" {
+	open-on-output "Samsung Electric Company U32R59x HNMN702707"
+}
+
+workspace "" {
+	open-on-output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd"
+}
+
+workspace "" {
+	open-on-output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd"
+}
+
 debug {
 		wait-for-frame-completion-in-pipewire
 }
@@ -25,9 +37,14 @@ spawn-at-startup "xwayland-satellite"
 environment {
 		DISPLAY ":0"
 }
+hotkey-overlay {
+    skip-at-startup
+}
 // tied to xwayland-satellite running first. other DEs it has the autostart tickbox
 spawn-at-startup "steam"
-spawn-at-startup "discord-canary"
+spawn-at-startup "discord"
+
+spawn-at-startup "/home/hecate/bin/oneshot.sh"
 
 input {
 		warp-mouse-to-focus
@@ -49,6 +66,7 @@ layout {
 				proportion 0.33333
 				proportion 0.5
 				proportion 0.66667
+				proportion 0.75
 		}
 
 		preset-window-heights {
@@ -103,36 +121,44 @@ window-rule {
 
 window-rule {
 		match app-id="discord"
-		open-on-output "DP-5"
-		open-on-workspace "2"
+		open-on-workspace ""
 }
 
 window-rule {
 		match app-id=r#"^org\.telegram\.desktop$"#
 		exclude title="^Media viewer$"
-		open-on-output "DP-6"
+		open-on-workspace ""
 }
 
 window-rule {
-		match app-id=r#"^steam"#
-		open-on-output "DP-5"
-		open-on-workspace "2"
+		match app-id=r#"^steam.*$"#
+		open-on-workspace ""
 }
 window-rule {
 		match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
 		default-floating-position x=10 y=10 relative-to="bottom-right"
 }
-
 window-rule {
 		match app-id="steam" title=r#"^(Steam Settings)|(Friends List)$"#
 		open-floating true
+}
+window-rule {
+		match app-id="firefox" at-startup=true
+		open-on-workspace ""
 }
 
 window-rule {
 		exclude app-id="com.mitchellh.ghostty"
 		exclude app-id="steam_app_1361210"
+		exclude app-id="steam_app_1422450"
 		geometry-corner-radius 12
 		clip-to-geometry true
+}
+
+window-rule {
+	match app-id=r#"^steam_app_.*$"#
+	open-floating false
+	open-fullscreen false
 }
 
 // todo: split into own file and niri-include it

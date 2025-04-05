@@ -12,6 +12,7 @@
 		"niri/window"
 	],
 	"modules-right": [
+		"mpd",
 		"cpu",
 		"memory",
 		"custom/notification",
@@ -19,6 +20,10 @@
 		"tray",
 		"clock"
 	],
+	"mpd": {
+		"server": "localhost",
+		
+	},
 	// Modules configuration
 	"custom/notification": {
 		"tooltip": false,

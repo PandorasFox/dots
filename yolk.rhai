@@ -49,6 +49,7 @@ let eggs = #{
 			"style.css": "~/.config/waybar/style.css",
 			"config.jsonc": "~/.config/waybar/config.jsonc",
 		},
+		main_file: "config.jsonc",
 	},
 	unit_files: #{
 		targets: #{

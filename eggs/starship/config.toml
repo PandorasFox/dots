@@ -9,7 +9,7 @@ success_symbol = '[➜](bold green)'
 min_time = 5_000
 
 [directory]
-truncation_length = 4
+truncation_length = 5
 truncation_symbol = '…/'
 
 [hostname]
