@@ -1,4 +1,6 @@
 import "secrets" as secrets;
+import "colors" as colors;
+
 
 let eggs = #{
 	zsh: #{
@@ -38,6 +40,7 @@ let eggs = #{
 	},
 	ghostty: #{
 		targets: "~/.config/ghostty/",
+		templates: ["config"],
 	},
 	niri: #{
 		enabled: io::command_available("niri"),
