@@ -1,7 +1,7 @@
 # {% if SYSTEM.hostname == "zephyr" %}
 #<yolk> eval "$(/opt/homebrew/bin/brew shellenv)"
 #<yolk> # {# replace_between(`"`, `@`, secrets::get("mpd")) #} 
-#<yolk> export MPD_HOST="@TODO DYNDNS"
+#<yolk> export MPD_HOST="@pantheo"
 # {% end %}
 
 # {% if SYSTEM.hostname == "pantheon" %}
