@@ -48,7 +48,8 @@
 		//"active-first": true,
 		"all-outputs": false,
 		"on-click": "activate",
-		"sort-by-app-id": true
+		"tooltip": true,
+		"sort-by-app-id": true,
 	},
 	"sway/workspaces": {
 		"all-outputs": false,
