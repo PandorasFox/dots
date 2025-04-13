@@ -12,7 +12,7 @@
 		"niri/window"
 	],
 	"modules-right": [
-		"mpd",
+		"mpris",
 		"cpu",
 		"memory",
 		"custom/notification",
@@ -21,7 +21,10 @@
 		"clock"
 	],
 	"mpd": {
-		"server": "@mpd",
+		"server": "@mpd"
+	},
+	"mpris": {
+		"player": "Feishin"
 	},
 	// Modules configuration
 	"custom/notification": {

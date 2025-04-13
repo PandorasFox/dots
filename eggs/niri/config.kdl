@@ -36,7 +36,6 @@ debug {
 spawn-at-startup "xwayland-satellite"
 environment {
 		DISPLAY ":0"
-		MPD_HOST "@localhost" // {< rbet(`"`, `@`, secrets::get("mpd")) >}
 }
 hotkey-overlay {
     skip-at-startup
@@ -133,6 +132,7 @@ window-rule {
 
 window-rule {
 		match app-id=r#"^steam.*$"#
+		match app-id="cs2"
 		open-on-workspace ""
 }
 window-rule {
@@ -150,20 +150,26 @@ window-rule {
 
 window-rule {
 		exclude app-id="com.mitchellh.ghostty"
-		exclude app-id="steam_app_1361210"
-		exclude app-id="steam_app_1422450"
+		exclude app-id="steam_app_1361210" // deadlock
+		exclude app-id="steam_app_1422450" // darktide
+		exclude app-id="cs2" // cs2
 		geometry-corner-radius 12
 		clip-to-geometry true
 }
 
-window-rule {
-		match app-id="steam_app_3241660"
+window-rule { // 16:9 games
+		match app-id="steam_app_3241660" // uhhhh TODO which game is this
+		match app-id="steam_app_3133060" // gnomes
 		// 2444 is (16:9) when height is 1374 (windowed w/ my bar)
+		min-width 2444
 		max-width 2444
+		min-height 1374
+		max-height 1374
 }
 
 window-rule {
 	match app-id=r#"^steam_app_.*$"#
+	match app-id="cs2"
 	open-floating false
 	open-fullscreen false
 }
@@ -193,7 +199,7 @@ binds {
 		// F6 repeat=false TODO pactl set-source-volume 0 0%
 		// and 0 100% when release
 		
-		Ctrl+End { set-dynamic-cast-window; }
+		Ctrl+Home { set-dynamic-cast-window; }
 		Mod+Q { close-window; }
 
 		Mod+Left  { focus-monitor-left; }

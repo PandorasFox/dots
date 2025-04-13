@@ -27,31 +27,39 @@ function random_pokemon {
 	# gen 3 up to 386, 4 to 493
 	id=$(shuf -i "1-386" -n 1)
 	sprite_url=$(curl -s "https://pokeapi.co/api/v2/pokemon/$id" | jq '.sprites.versions."generation-iii".emerald' | grep front | shuf -n 1 | awk '{ print $2 }' | tr -d '",')
-	albumart=$(curl -s --output - $sprite_url)
+	next_album_art=$(curl -s --output - $sprite_url)
 }
 
 function draw {
 	IMAGE_HEIGHT=$((LINES - 2))
 	headline=$(mpc current -f '\[%artist%\] - %title%')
 	albumname=$(mpc current -f '%album% (%date%)')
-	albumart=$(mpc albumart "$(mpc current -f %file%)" 2>/dev/null)
-	albumart_state=$?
-
-	if [[ $albumart_state == 0 ]]; then
+	
+	embedded_art=$(mpc readpicture "$(mpc current -f %file%)" 2>/dev/null)
+	embedded_art_state=$?
+	
+	album_art=$(mpc albumart "$(mpc current -f %file%)" 2>/dev/null)
+	album_art_state=$?
+	# switch statement this on next change to this logic! No More Complexity!
+	if [[ $embedded_art_state == 0 ]]; then
 		timg_mode='k'
+		next_album_art=$embedded_art
+	elif [[ $album_art_state == 0 ]]; then
+		timg_mode='k'
+		next_album_art=$album_art
 	else
 		timg_mode='h'
 		random_pokemon
 	fi
 	if [[ $albumart != $last_albumart ]] tput clear
 
-	tput cup 0 0 && timg -p $timg_mode -C -gx$IMAGE_HEIGHT - <<<$albumart
+	tput cup 0 0 && timg -p $timg_mode -C -gx$IMAGE_HEIGHT - <<<$next_album_art
 	print_centered $headline
 	echo # newline
 	print_centered $albumname
 	# no newline
 	tput civis
-	last_albumart=$albumart
+	last_albumart=$next_album_art
 }
 
 function redraw {
