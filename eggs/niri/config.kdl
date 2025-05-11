@@ -3,6 +3,8 @@
 // TODO: yolk a telegram-desktop.desktop into ~/.config/autostart
 spawn-at-startup "telegram-desktop"
 spawn-at-startup "firefox"
+spawn-at-startup "env" "ELECTRON_OZONE_PLATFORM_HINT=x11" "feishin"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 // TODO yolk-wrap this based on hostname
 output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd" {
@@ -28,27 +30,42 @@ workspace "" {
 	open-on-output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd"
 }
 
+workspace "󰝚" {
+	open-on-output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd"
+}
+
 debug {
-		wait-for-frame-completion-in-pipewire
+	wait-for-frame-completion-in-pipewire
 }
 
 // ===== GENERAL NIRI CONFIG
 spawn-at-startup "xwayland-satellite"
 environment {
-		DISPLAY ":0"
+	DISPLAY ":0"
 }
 hotkey-overlay {
-    skip-at-startup
+	skip-at-startup
 }
 // tied to xwayland-satellite running first. other DEs it has the autostart tickbox
 spawn-at-startup "steam"
-spawn-at-startup "discord"
+// spawn-at-startup "discord"
 
 spawn-at-startup "/home/hecate/bin/oneshot.sh"
 
 input {
 		warp-mouse-to-focus
 		focus-follows-mouse max-scroll-amount="15%"
+}
+
+gestures {
+	hot-corners {
+		off
+	}
+}
+
+overview {
+	zoom 0.66
+	backdrop-color "#000000"
 }
 
 prefer-no-csd
@@ -120,6 +137,11 @@ window-rule {
 }
 
 window-rule {
+	match app-id="feishin"
+	open-on-workspace "󰝚"
+}
+
+window-rule {
 		match app-id="discord"
 		open-on-workspace ""
 }
@@ -150,16 +172,34 @@ window-rule {
 
 window-rule {
 		exclude app-id="com.mitchellh.ghostty"
+		exclude app-id="cs2" // cs2
 		exclude app-id="steam_app_1361210" // deadlock
 		exclude app-id="steam_app_1422450" // darktide
-		exclude app-id="cs2" // cs2
+		exclude app-id="steam_app_2806640" // talos
+		exclude app-id="steam_app_1063420" // void crew
+		exclude app-id="steam_app_1903340" // clair obscur
 		geometry-corner-radius 12
 		clip-to-geometry true
+}
+
+window-rule {
+		match app-id="steam_app_1361210" // deadlock
+		match app-id="steam_app_1422450" // darktide
+		match app-id="steam_app_2806640" // talos
+		match app-id="steam_app_1063420" // void crew
+		match app-id="steam_app_1903340" // clair obscur
+		exclude title=r#"^BepInEx"#
+
+		min-width 3440
+		max-width 3440
+		min-height 1374
+		max-height 1374
 }
 
 window-rule { // 16:9 games
 		match app-id="steam_app_3241660" // uhhhh TODO which game is this
 		match app-id="steam_app_3133060" // gnomes
+		match app-id="steam_app_1569580" // blue prince
 		// 2444 is (16:9) when height is 1374 (windowed w/ my bar)
 		min-width 2444
 		max-width 2444
@@ -190,8 +230,8 @@ binds {
 		XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
 		XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
 		XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-		XF86AudioPlay        allow-when-locked=true { spawn "playerctl" "-p" "mpd" "play-pause"; }
-		XF86AudioNext        allow-when-locked=true { spawn "playerctl" "-p" "mpd" "next"; }
+		XF86AudioPlay        allow-when-locked=true { spawn "playerctl" "-p" "Feishin" "play-pause"; }
+		XF86AudioNext        allow-when-locked=true { spawn "playerctl" "-p" "Feishin" "next"; }
 
 		// XF86Launch5          allow-when-locked=true { }
 		// XF86Launch6          allow-when-locked=true { }
@@ -312,6 +352,7 @@ binds {
 
 		// Switches focus between the current and the previous workspace.
 		// Mod+Tab { focus-workspace-previous; }
+		Mod+Tab { toggle-overview; }
 
 		// The following binds move the focused window in and out of a column.
 		// If the window is alone, they will consume it into the nearby column to the side.
@@ -320,9 +361,9 @@ binds {
 		Mod+BracketRight { consume-or-expel-window-right; }
 
 		// Consume one window from the right to the bottom of the focused column.
-		Mod+Comma  { consume-window-into-column; }
+		//Mod+Comma  { consume-window-into-column; }
 		// Expel the bottom window from the focused column to the right.
-		Mod+Period { expel-window-from-column; }
+		//Mod+Period { expel-window-from-column; }
 
 		Mod+R { switch-preset-column-width; }
 		Mod+Shift+R { switch-preset-window-height; }
@@ -353,8 +394,11 @@ binds {
 		Mod+Shift+Equal { set-window-height "+10%"; }
 
 		// Move the focused window between the floating and the tiling layout.
-		Mod+V       { toggle-window-floating; }
-		Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+		Mod+Space       { toggle-window-floating; }
+		Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+
+		Mod+V { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+		Mod+Period { spawn "bemoji" "-c"; }
 
 		// Toggle tabbed column display mode.
 		// Windows in this column will appear as vertical tabs,

@@ -2,6 +2,11 @@ export ZDOTDIR="$HOME/.config/zsh"
 
 # {% if SYSTEM.hostname == "pantheon" %}
 #<yolk> export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
+#<yolk> export WINEPREFIX=/mnt/grotto/umu
+#<yolk> export STMLIB=SteamLibrary/steamapps/common
+#<yolk> export GAMES_HOARD=/mnt/hoard/$STMLIB
+#<yolk> export GAMES_GROTTO=/mnt/grotto/$STMLIB
+#<yolk> export GAMES_LOCAL=/home/hecate/.local/share/Steam/steamapps/common
 # {% else %}
 # {% if SYSTEM.hostname == "zephyr" %}
 export SSH_AUTH_SOCK=~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
