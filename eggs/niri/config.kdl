@@ -5,6 +5,7 @@ spawn-at-startup "telegram-desktop"
 spawn-at-startup "firefox"
 spawn-at-startup "env" "ELECTRON_OZONE_PLATFORM_HINT=x11" "feishin"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "swww-daemon"
 
 // TODO yolk-wrap this based on hostname
 output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd" {
@@ -188,6 +189,7 @@ window-rule {
 		match app-id="steam_app_2806640" // talos
 		match app-id="steam_app_1063420" // void crew
 		match app-id="steam_app_1903340" // clair obscur
+		match app-id="tf_linux64"
 		exclude title=r#"^BepInEx"#
 
 		min-width 3440
@@ -210,6 +212,7 @@ window-rule { // 16:9 games
 window-rule {
 	match app-id=r#"^steam_app_.*$"#
 	match app-id="cs2"
+	match app-id="tf_linux64"
 	open-floating false
 	open-fullscreen false
 }
@@ -238,6 +241,9 @@ binds {
 
 		// F6 repeat=false TODO pactl set-source-volume 0 0%
 		// and 0 100% when release
+
+		XF86Launch6  { spawn "discover-overlay" "--rpc" "--toggle-mute"; }
+		XF86Launch5  { spawn "discover-overlay" "--rpc" "--toggle-deaf"; }
 		
 		Ctrl+Home { set-dynamic-cast-window; }
 		Mod+Q { close-window; }
