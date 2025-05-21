@@ -78,6 +78,15 @@
 		"interval": 10,
 		"format": "󰍹  {percentage}% ({text})",
 	},
+	"niri/window": {
+		"format": "{}",
+		"separate-outputs": true,
+		"icon": true,
+		"rewrite": {
+			"(.*) — Mozilla Firefox": "$1",
+			"(.*) - Discord": "$1",
+		},
+	},
 	"wlr/taskbar": {
 		//"active-first": true,
 		"all-outputs": false,

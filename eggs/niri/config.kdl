@@ -226,6 +226,7 @@ binds {
 		Mod+T { spawn "ghostty"; }
 		Mod+D { spawn "fuzzel"; }
 		Super+Alt+L { spawn "swaylock"; }
+		Super+L { spawn "/home/hecate/bin/lock.sh"; }
 		Mod+N { spawn "swaync-client" "-t"; }
 
 		// Example volume keys mappings for PipeWire & WirePlumber.
