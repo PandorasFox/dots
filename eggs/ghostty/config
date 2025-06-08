@@ -7,7 +7,7 @@
 # font-family = monofur
 font-family = "Monofur"
 
-background = 131213
+background = 000000
 foreground = f15c99
 selection-background = 472234
 selection-foreground = 131213
@@ -44,7 +44,8 @@ palette = 14=#a1efe4
 # {# rcol(colors::palette.color15) #}
 palette = 15=#f9f8f5  
 
-background-opacity = 0.7
+# background-opacity = 0.7
+background-opacity = 1.0
 background-blur = true
 
 window-theme = ghostty 

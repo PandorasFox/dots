@@ -1,38 +1,49 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
 
 // TODO: yolk a telegram-desktop.desktop into ~/.config/autostart
-spawn-at-startup "telegram-desktop"
+spawn-at-startup "Telegram"
 spawn-at-startup "firefox"
 spawn-at-startup "env" "ELECTRON_OZONE_PLATFORM_HINT=x11" "feishin"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "swww-daemon"
 
 // TODO yolk-wrap this based on hostname
-output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd" {
+
+
+/*output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd" {
 		mode "3440x1440@120.000"
 		position x=3840 y=360
 		variable-refresh-rate on-demand=true
+}*/
+
+// TODO better way to do the geometry maybe one day haha
+
+output "LG Electronics LG ULTRAGEAR+ 412NTWG8M665" {
+		position x=0 y=2160
+		variable-refresh-rate on-demand=true
 }
+
 output "Samsung Electric Company U32R59x HNMN702707" {
 		mode "3840x2160"
 		position x=0 y=0
 		scale 1.0
 }
 
+
 workspace "" {
 	open-on-output "Samsung Electric Company U32R59x HNMN702707"
 }
 
 workspace "" {
-	open-on-output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd"
+	open-on-output "LG Electronics LG ULTRAGEAR+ 412NTWG8M665"
 }
 
 workspace "" {
-	open-on-output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd"
+	open-on-output "LG Electronics LG ULTRAGEAR+ 412NTWG8M665"
 }
 
 workspace "󰝚" {
-	open-on-output "Dell Inc. Dell AW3420DW #ASNquZnw78Hd"
+	open-on-output "LG Electronics LG ULTRAGEAR+ 412NTWG8M665"
 }
 
 debug {
@@ -49,7 +60,7 @@ hotkey-overlay {
 }
 // tied to xwayland-satellite running first. other DEs it has the autostart tickbox
 spawn-at-startup "steam"
-// spawn-at-startup "discord"
+spawn-at-startup "discord" "--disable-gpu"
 
 spawn-at-startup "/home/hecate/bin/oneshot.sh"
 
@@ -163,7 +174,7 @@ window-rule {
 		default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 window-rule {
-		match app-id="steam" title=r#"^(Steam Settings)|(Friends List)$"#
+		match app-id="steam" title=r#"^(Steam Settings)$"#
 		open-floating true
 }
 window-rule {
@@ -179,6 +190,7 @@ window-rule {
 		exclude app-id="steam_app_2806640" // talos
 		exclude app-id="steam_app_1063420" // void crew
 		exclude app-id="steam_app_1903340" // clair obscur
+		exclude app-id="BorderlandsPreSequel"
 		geometry-corner-radius 12
 		clip-to-geometry true
 }
@@ -190,6 +202,7 @@ window-rule {
 		match app-id="steam_app_1063420" // void crew
 		match app-id="steam_app_1903340" // clair obscur
 		match app-id="tf_linux64"
+		match app-id="BorderlandsPreSequel"
 		exclude title=r#"^BepInEx"#
 
 		min-width 3440
@@ -202,6 +215,7 @@ window-rule { // 16:9 games
 		match app-id="steam_app_3241660" // uhhhh TODO which game is this
 		match app-id="steam_app_3133060" // gnomes
 		match app-id="steam_app_1569580" // blue prince
+		match app-id="steam_app_2622380" // nightreign
 		// 2444 is (16:9) when height is 1374 (windowed w/ my bar)
 		min-width 2444
 		max-width 2444
@@ -213,6 +227,7 @@ window-rule {
 	match app-id=r#"^steam_app_.*$"#
 	match app-id="cs2"
 	match app-id="tf_linux64"
+	match app-id="BorderlandsPreSequel"
 	open-floating false
 	open-fullscreen false
 }
