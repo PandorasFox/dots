@@ -50,3 +50,7 @@ background-blur = true
 
 window-theme = ghostty 
 window-decoration = server
+
+window-height = 80
+window-width = 120
+window-padding-balance = true

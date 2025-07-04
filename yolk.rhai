@@ -14,6 +14,10 @@ let eggs = #{
 		main_file: "bits",
 		optional_secrets: ["mpd"],
 	},
+    tmux: #{
+        enabled: io::command_available("tmux"),
+        targets: "~/.config/tmux/",
+    },
 	starship: #{
 		enabled: io::command_available("starship"),
 		targets: #{
