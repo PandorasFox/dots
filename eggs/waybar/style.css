@@ -16,7 +16,7 @@
 }
 
 #waybar > .horizontal {
-	margin: .5em .2em;
+	margin: 5px;
 }
 
 /* Disable some default styling on buttons */
@@ -45,7 +45,7 @@ image {
 .module {
 	margin: 0 .3em;
 	border-radius: .5em;
-	padding: .4em .8em;
+	padding: 0 .6em;
 	box-shadow: 0 0 .2em 0 rgba(0, 0, 0, 0.5);
 
 	background-color: @bg;

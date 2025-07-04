@@ -44,8 +44,8 @@ palette = 14=#a1efe4
 # {# rcol(colors::palette.color15) #}
 palette = 15=#f9f8f5  
 
-# background-opacity = 0.7
-background-opacity = 1.0
+background-opacity = 0.7
+#background-opacity = 1.0
 background-blur = true
 
 window-theme = ghostty 

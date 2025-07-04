@@ -78,54 +78,64 @@ gestures {
 overview {
 	zoom 0.66
 	backdrop-color "#000000"
+	workspace-shadow {
+		off
+	}
 }
 
 prefer-no-csd
 
+layer-rule {
+	match namespace="^swww-daemon$"
+	place-within-backdrop true
+	//baba-is-float true
+}
+
 layout {
-		gaps 16
-		struts {
-				top -16
-				bottom -12
-		}
+	background-color "transparent"
+	gaps 20
+	struts {
+		top -16
+		bottom -16
+	}
 
-		center-focused-column "on-overflow"
+	center-focused-column "on-overflow"
 
-		preset-column-widths {
-				proportion 0.33333
-				proportion 0.5
-				proportion 0.66667
-				proportion 0.75
-		}
+	preset-column-widths {
+		proportion 0.33333
+		proportion 0.5
+		proportion 0.66667
+		proportion 0.75
+	}
 
-		preset-window-heights {
-				proportion 0.5
-				proportion 1.0
-		}
+	preset-window-heights {
+		proportion 0.5
+		proportion 1.0
+	}
 
-		// You can change the default width of the new windows.
-		default-column-width {}
+	// You can change the default width of the new windows.
+	default-column-width {}
 
-		// You can change how the focus ring looks.
-		focus-ring {
-				width 4
-				active-color "#f51c9980"
-				inactive-color "#47223480"
-				// You can also use gradients. They take precedence over solid colors.
-				// Gradients are rendered the same as CSS linear-gradient(angle, from, to).
-				// The angle is the same as in linear-gradient, and is optional,
-				// defaulting to 180 (top-to-bottom gradient).
-				// You can use any CSS linear-gradient tool on the web to set these up.
-				// Changing the color space is also supported, check the wiki for more info.
-				// active-gradient from="#80c8ff" to="#bbddff" angle=45
-				// You can also color the gradient relative to the entire view
-				// of the workspace, rather than relative to just the window itself.
-				// To do that, set relative-to="workspace-view".
-				// inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-		}
-		border {
-				off
-		}
+	// You can change how the focus ring looks.
+	focus-ring {
+		width 4
+		active-color "#f51c9980"
+		inactive-color "#47223480"
+		// You can also use gradients. They take precedence over solid colors.
+		// Gradients are rendered the same as CSS linear-gradient(angle, from, to).
+		// The angle is the same as in linear-gradient, and is optional,
+		// defaulting to 180 (top-to-bottom gradient).
+		// You can use any CSS linear-gradient tool on the web to set these up.
+		// Changing the color space is also supported, check the wiki for more info.
+		// active-gradient from="#80c8ff" to="#bbddff" angle=45
+		// You can also color the gradient relative to the entire view
+		// of the workspace, rather than relative to just the window itself.
+		// To do that, set relative-to="workspace-view".
+		// inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+	}
+	border {
+		off
+	}
 }
 
 // A ~ at the front will be expanded to the home directory.
@@ -140,6 +150,7 @@ window-rule {
 		// - host Firefox (app-id is "firefox")
 		// - Flatpak Firefox (app-id is "org.mozilla.firefox")
 		match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+		match app-id="xdg-desktop-portal-gtk"
 		open-floating true
 }
 
@@ -191,6 +202,7 @@ window-rule {
 		exclude app-id="steam_app_1063420" // void crew
 		exclude app-id="steam_app_1903340" // clair obscur
 		exclude app-id="BorderlandsPreSequel"
+		exclude app-id="steam_app_397540"  // bl3
 		geometry-corner-radius 12
 		clip-to-geometry true
 }
@@ -203,12 +215,13 @@ window-rule {
 		match app-id="steam_app_1903340" // clair obscur
 		match app-id="tf_linux64"
 		match app-id="BorderlandsPreSequel"
+		match app-id="steam_app_397540"  // bl3
 		exclude title=r#"^BepInEx"#
 
 		min-width 3440
 		max-width 3440
-		min-height 1374
-		max-height 1374
+		min-height 1390
+		max-height 1390
 }
 
 window-rule { // 16:9 games
@@ -219,8 +232,8 @@ window-rule { // 16:9 games
 		// 2444 is (16:9) when height is 1374 (windowed w/ my bar)
 		min-width 2444
 		max-width 2444
-		min-height 1374
-		max-height 1374
+		min-height 1390
+		max-height 1390
 }
 
 window-rule {

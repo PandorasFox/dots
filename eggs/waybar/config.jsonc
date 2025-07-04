@@ -6,6 +6,10 @@
 	//"width": 500, // Waybar width
 	"spacing": 4, // Gaps between modules (4px)
 	// Choose the order of the modules
+	"output": [
+		// yolk-ify which monitor is which..
+		"DP-5"
+	],
 	"modules-left": [
 		"niri/workspaces",
 		"wlr/taskbar",
@@ -80,7 +84,7 @@
 	},
 	"niri/window": {
 		"format": "{}",
-		"separate-outputs": true,
+		"separate-outputs": false,
 		"icon": true,
 		"rewrite": {
 			"(.*) — Mozilla Firefox": "$1",

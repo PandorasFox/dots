@@ -8,6 +8,9 @@ vim.cmd("hi LineNr guibg=#222436 guifg=#c8d3f5")
 vim.cmd("hi LineNrAbove guibg=#222436 guifg=#c8d3f5")
 vim.cmd("hi LineNrBelow guibg=#222436 guifg=#c8d3f5")
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.title = true
