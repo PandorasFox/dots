@@ -1,5 +1,5 @@
 @define-color text #cfcfcf;
-@define-color bg rgba(30, 30, 30, 0.5);
+@define-color bg rgba(241,92,153,0.60);
 @define-color fg #f51c99;
 @define-color fg-alt #d6316e;
 @define-color fg-notif #ffffff;
@@ -8,6 +8,7 @@
 
 /* Root */
 #waybar {
+
 	font-family: Monofur;
 	font-size: 18px;
 	background-color: rgba(0, 0, 0, 0);
