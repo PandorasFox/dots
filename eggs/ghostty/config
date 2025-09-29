@@ -54,3 +54,6 @@ window-decoration = server
 window-height = 80
 window-width = 120
 window-padding-balance = true
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+keybind = shift+enter=text:\x1b\r

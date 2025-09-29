@@ -2,7 +2,6 @@
 # deps: timg and mpc/mpd. curl, grep, shuf, awk, tr, and jq are needed to catch 'em all
 
 last_albumart=""
-wait_pid=
 tput clear
 
 function print_centered {
@@ -11,7 +10,7 @@ function print_centered {
 	spaze=$(( ($COLUMNS - $str_len)/2 ))
 	left_padding=$((spaze + str_len))	
 	left_padded=${(l:left_padding:)1}
-	echo -n ${(r:COLUMNS:)left_padded}
+	echo -n "${(r:COLUMNS:)left_padded}"
 }
 
 # blinking cursor is a distraction
@@ -31,33 +30,25 @@ function random_pokemon {
 }
 
 function draw {
-	IMAGE_HEIGHT=$((LINES - 2))
-	headline=$(mpc current -f '\[%artist%\] - %title%')
-	albumname=$(mpc current -f '%album% (%date%)')
-	
-	embedded_art=$(mpc readpicture "$(mpc current -f %file%)" 2>/dev/null)
-	embedded_art_state=$?
-	
-	album_art=$(mpc albumart "$(mpc current -f %file%)" 2>/dev/null)
+	IMAGE_HEIGHT=$((LINES - 3))
+	artist=$(playerctl metadata xesam:albumArtist)
+	title=$(playerctl metadata xesam:title)
+	albumname=$(playerctl metadata xesam:album)
+	headline="[$artist] - $title"
+	art_url=$(playerctl metadata mpris:artUrl 2>/dev/null | sed -re 's/&?size=[0-9]+//')
 	album_art_state=$?
-	# switch statement this on next change to this logic! No More Complexity!
-	if [[ $embedded_art_state == 0 ]]; then
+	if [[ $album_art_state == 0 ]]; then
 		timg_mode='k'
-		next_album_art=$embedded_art
-	elif [[ $album_art_state == 0 ]]; then
-		timg_mode='k'
-		next_album_art=$album_art
+		next_album_art=$(curl -s "$art_url" --output -)
 	else
 		timg_mode='h'
 		random_pokemon
 	fi
-	if [[ $albumart != $last_albumart ]] tput clear
+	if [[ $next_album_art != $last_albumart ]] tput clear
 
 	tput cup 0 0 && timg -p $timg_mode -C -gx$IMAGE_HEIGHT - <<<$next_album_art
 	print_centered $headline
-	echo # newline
 	print_centered $albumname
-	# no newline
 	tput civis
 	last_albumart=$next_album_art
 }
@@ -68,10 +59,7 @@ function redraw {
 trap redraw SIGWINCH
 
 stty -echo
+export FUNCS=$(functions print_centered unhide_cursor random_pokemon draw)
 while true; do
-	draw
-	mpc current --wait 2>&1 >/dev/null & wait_pid=$!
-	wait
-	wait_pid=
-	# DO IT AGAIN!
+	playerctl metadata 'xesam:title' -F | xargs -n1 -d'\n' zsh -c "eval $FUNCS; draw"
 done

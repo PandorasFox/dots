@@ -45,6 +45,10 @@ let eggs = #{
 		templates: ["config.kdl"],
 		optional_secrets: ["mpd"],
 	},
+    pandora: #{
+        enabled: io::command_available("pandora"),
+        targets: "~/.config/pandora/",
+    },
 	fuzzel: #{
 		enabled: io::command_available("fuzzel"),
 		targets: "~/.config/fuzzel/",

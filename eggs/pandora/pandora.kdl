@@ -1,0 +1,27 @@
+output "DP-5" {
+    image "~/pictures/wallpapers/eclipse.png"
+    mode "scroll-vertical"
+}
+
+output "DP-6" {
+    image "~/pictures/wallpapers/garden.png"
+    //image "~/pictures/wallpapers/pandora_neon_white.png"
+    mode "static"
+
+	lockscreen {
+        image "~/pictures/wallpapers/pandora_neon_white.png"
+        mode "static"
+    }
+
+    workspace "🗨️" {
+        image "~/pictures/wallpapers/plushie hoard.png"
+        mode "static"
+        trigger "workspace-name"
+    }
+}
+
+logging "verbose"
+animation {
+    //slowdown 2.0
+    //slowdown 0.0
+}
